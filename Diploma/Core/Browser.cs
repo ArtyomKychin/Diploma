@@ -27,7 +27,6 @@ namespace Diploma.Core
 
         private Browser()
         {
-            //bool isHeadless = true;//for headless on - true
             var isHeadless = bool.Parse(TestContext.Parameters.Get("Headless"));
             var wait = int.Parse(TestContext.Parameters.Get("ImplicityWait"));
 

@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using Diploma.Core;
+using OpenQA.Selenium;
 using SeleniumTests.Diploma.PageObject;
 
 namespace Diploma.PageObject
@@ -18,23 +19,20 @@ namespace Diploma.PageObject
 
         public override BasePage OpenPage()
         {
-            driver.Navigate().GoToUrl(url);
+            Browser.Instance.NavigateToUrl(url);
             return this;
         }
 
         public AddressInputPage UpdateCustomerAddress()
         {
             driver.FindElement(UpdateAddresseButton).Click();
-
             return new AddressInputPage();
         }
 
         public DeliveryMethodPage SkipOrUpdateAddressAndContinue()
         {
             driver.FindElement(ContinueButton).Click();
-
             return new DeliveryMethodPage();
         }
-
     }
 }   

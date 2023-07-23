@@ -15,7 +15,7 @@ namespace Diploma.Test
         {
             Browser.Instance.NavigateToUrl("http://prestashop.qatestlab.com.ua/ru/");
 
-            new HomePage()
+            new HomePage()                
                .GoToLogin()
                .LoginAsStandartUser()
                .GoToHomePage()

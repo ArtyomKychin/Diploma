@@ -1,8 +1,6 @@
-﻿using Diploma.PageObject;
+﻿using Diploma.Core;
 using OpenQA.Selenium;
 using SeleniumTests.Diploma.PageObject;
-using SeleniumTests.Diploma.PageObject;
-using System;
 
 namespace Diploma.PageObject
 {
@@ -21,7 +19,7 @@ namespace Diploma.PageObject
 
         public override BasePage OpenPage()
         {
-            driver.Navigate().GoToUrl(url);
+            Browser.Instance.NavigateToUrl(url);
             return this;
         }
         public void ContinuePurchases()
@@ -32,7 +30,6 @@ namespace Diploma.PageObject
         public CartPage GoToCart()
         {
             driver.FindElement(CheckoutButton).Click();
-
             return new CartPage();
         }
     }

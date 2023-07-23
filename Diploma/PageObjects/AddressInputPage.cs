@@ -1,9 +1,8 @@
-﻿using OpenQA.Selenium;
+﻿using Diploma.Core;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using SeleniumTests.Diploma.PageObject;
 using SeleniumTests.Diploma;
 using SeleniumTests.Diploma.PageObject;
-using Diploma.Core;
 
 namespace Diploma.PageObject
 {
@@ -30,7 +29,7 @@ namespace Diploma.PageObject
 
         public override BasePage OpenPage()
         {
-            driver.Navigate().GoToUrl(url);
+            Browser.Instance.NavigateToUrl(url);
             return this;
         }
 
@@ -39,7 +38,6 @@ namespace Diploma.PageObject
             var customer = UserBuilder.GetUserData();
             
             InputCustomerAddressAndSave(customer);
-
             return new AddressPage();
         }
 
@@ -55,7 +53,6 @@ namespace Diploma.PageObject
             SelectCountry();
             SelectState();
             driver.FindElement(SaveAndContinueButton).Click();
-
         }
 
         public void SelectCountry()
@@ -74,6 +71,5 @@ namespace Diploma.PageObject
         {
             driver.FindElement(SaveAndContinueButton).Click();
         }
-
     }
 }

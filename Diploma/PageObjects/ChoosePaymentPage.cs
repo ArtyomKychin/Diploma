@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using Diploma.Core;
+using OpenQA.Selenium;
 using SeleniumTests.Diploma.PageObject;
 using SeleniumTests.Diploma.PageObject;
 
@@ -10,9 +11,7 @@ namespace Diploma.PageObject
         private By ChoosePaymentMethod = By.XPath("//*[contains(text(),'payment method')]");
         private By BankTransferButton = By.ClassName("bankwire");
 
-
         public const string url = "http://prestashop.qatestlab.com.ua/ru/order?multi-shipping=";
-
 
         public ChoosePaymentPage()
         {
@@ -21,13 +20,12 @@ namespace Diploma.PageObject
 
         public override BasePage OpenPage()
         {
-            driver.Navigate().GoToUrl(url);
+            Browser.Instance.NavigateToUrl(url);
             return this;
         }
         public ConfirmPaymentPage SelectBankTransfer()
         {
             driver.FindElement(BankTransferButton).Click();
-
             return new ConfirmPaymentPage();
         }
     }

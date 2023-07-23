@@ -16,7 +16,7 @@ namespace Diploma.Test
             string expcetedPruductQuantity = "3";
 
             new HomePage()
-                .AddMoreProducts();
+                 .AddMoreProducts();
 
             var actualProductQuantityOnCartIcon = new CartPage().GetActualProductQuantityOnCartIcon();
 

@@ -7,7 +7,6 @@ namespace Diploma.PageObject
 {
     public class CompletePage : BasePage
     {
-
         private By BackToOrdersButton = By.XPath("//*[@title='Back to orders']");
         public const string url = "http://prestashop.qatestlab.com.ua/ru";
 

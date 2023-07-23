@@ -1,9 +1,8 @@
-﻿using Diploma.PageObject;
+﻿using Diploma.Core;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium.Support.UI;
 using SeleniumTests.Diploma.PageObject;
-using SeleniumTests.Diploma.PageObject;
+using System;
 
 namespace Diploma.PageObject
 {
@@ -21,19 +20,18 @@ namespace Diploma.PageObject
         private By LanguageSelector = By.XPath("//div[@id='languages-block-top']");
         private By Login = By.ClassName("login");
 
-
-        public const string url = "http://prestashop.qatestlab.com.ua/ru/";
+        
+        public override BasePage OpenPage()
+        {
+            Browser.Instance.NavigateToUrl("http://prestashop.qatestlab.com.ua/ru/");
+            return this;
+        }
 
         public HomePage()
         {
             WaitHelper.WaitElement(driver, InfoBlock);
         }
 
-        public override BasePage OpenPage()
-        {
-            driver.Navigate().GoToUrl(url);
-            return this;
-        }
 
         public TshirtsPage BuyProductAndGoToCart()
         {
@@ -85,7 +83,6 @@ namespace Diploma.PageObject
         public LoginPage GoToLogin()
         {
             driver.FindElement(Login).Click();
-
             return new LoginPage();
         }
 
@@ -99,11 +96,9 @@ namespace Diploma.PageObject
 
         public void LangagueSelect()
         {
-
             driver.FindElement(LanguageSelector).Click();
             driver.FindElement(EnglishLanguage).Click();
         }
-
     }
 }
 

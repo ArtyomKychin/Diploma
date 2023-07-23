@@ -1,6 +1,5 @@
-﻿using Diploma.PageObject;
+﻿using Diploma.Core;
 using OpenQA.Selenium;
-using SeleniumTests.Diploma.PageObject;
 using SeleniumTests.Diploma.PageObject;
 
 namespace Diploma.PageObject
@@ -11,6 +10,8 @@ namespace Diploma.PageObject
         private By AgreeCheckBox = By.Id("uniform-cgv");
         private By StepShiping = By.XPath("//*[@class='step_current four']");
 
+        public const string url = "http://prestashop.qatestlab.com.ua/ru/order";
+
         public DeliveryMethodPage()
         {
             WaitHelper.WaitElement(driver, StepShiping);
@@ -18,13 +19,13 @@ namespace Diploma.PageObject
 
         public override BasePage OpenPage()
         {
-            throw new NotImplementedException();
+            Browser.Instance.NavigateToUrl(url);
+            return this;
         }
 
         public DeliveryMethodPage DontAgreeTermsOfServicesCheckBox()
         {
             driver.FindElement(ContinueToProceed).Click();
-
             return this;
         }
 
@@ -32,10 +33,7 @@ namespace Diploma.PageObject
         {
             driver.FindElement(AgreeCheckBox).Click();
             driver.FindElement(ContinueToProceed).Click();
-
             return new ChoosePaymentPage();
         }
-
-
     }
 }

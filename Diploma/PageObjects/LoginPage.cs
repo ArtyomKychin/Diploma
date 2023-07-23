@@ -23,7 +23,7 @@ namespace Diploma.PageObject
 
         public override LoginPage OpenPage()
         {
-            driver.Navigate().GoToUrl(url);
+            Browser.Instance.NavigateToUrl(url);
             return this;
         }
         

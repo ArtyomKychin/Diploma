@@ -13,5 +13,6 @@ namespace SeleniumTests.Diploma.PageObject
         }
 
         public abstract BasePage OpenPage();
+                
     }
 }

@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using Diploma.Core;
+using OpenQA.Selenium;
 using SeleniumTests.Diploma.PageObject;
 
 namespace Diploma.PageObject
@@ -12,7 +13,6 @@ namespace Diploma.PageObject
 
         public const string url = "http://prestashop.qatestlab.com.ua/ru/my-account";
 
-
         public AccountPage()
         {
             WaitHelper.WaitElement(driver, AccountHeader);
@@ -20,29 +20,24 @@ namespace Diploma.PageObject
 
         public override BasePage OpenPage()
         {
-
-            driver.Navigate().GoToUrl(url);
-
+            Browser.Instance.NavigateToUrl(url);
             return this;
         }
         public HomePage GoToHomePage()
         {
             driver.FindElement(HomePageHeader).Click();
-
             return new HomePage();
         }
 
         public AccountPage GoToLogout()
         {
             driver.FindElement(LogoutButton).Click();
-
             return new AccountPage();
         }
 
         public AddressPage GoToAddressPage()
         {
             driver.FindElement(AddressButton).Click();
-
             return new AddressPage();
         }
     }
