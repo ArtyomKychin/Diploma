@@ -19,6 +19,8 @@ namespace Diploma.PageObject
         private By CartPage = By.XPath("//*[@title='View my shopping cart']");
         private By EnglishLanguage = By.XPath("//*[contains(text(),'English')]");
         private By LanguageSelector = By.XPath("//div[@id='languages-block-top']");
+        private By Login = By.ClassName("login");
+
 
         public const string url = "http://prestashop.qatestlab.com.ua/ru/";
 
@@ -42,26 +44,26 @@ namespace Diploma.PageObject
         }
 
 
-        public void ActivateQuickViewTShirt()
+        public void ActivateQuickViewTShirt()//there will be refactoring/May be)
         {
             new Actions(driver)
                 .MoveToElement(driver.FindElement(AddTShirts))
                 .Perform();
         }
-        public void ActivateQuickViewBlouse()
+        public void ActivateQuickViewBlouse()//there will be refactoring
         {
             new Actions(driver)
                 .MoveToElement(driver.FindElement(AddBlouse))
                 .Perform();
         }
-        public void ActivateQuickViewDress()
+        public void ActivateQuickViewDress()//there will be refactoring
         {
             new Actions(driver)
                 .MoveToElement(driver.FindElement(AddDress))
                 .Perform();
         }
 
-        public CartPage AddMoreProducts()
+        public CartPage AddMoreProducts()//there will be refactoring
         {
 
             ActivateQuickViewTShirt();
@@ -82,7 +84,7 @@ namespace Diploma.PageObject
 
         public LoginPage GoToLogin()
         {
-            driver.FindElement(By.ClassName("login"));
+            driver.FindElement(Login).Click();
 
             return new LoginPage();
         }

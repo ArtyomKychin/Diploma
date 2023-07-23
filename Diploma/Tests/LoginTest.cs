@@ -25,18 +25,14 @@ namespace Diploma.Test
         [Test]
         public void LoginUnknownUser()
         {
-            var user = new UserLoginModel()
-            {
-                Mail = "Test@test.com",
-                Password = "password"
-            };
+            var user = UserBuilder.GetUnknownUser();
+            Browser.Instance.NavigateToUrl("http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account");
 
-            var page = new LoginPage();
-
-            page.OpenPage()
+            new LoginPage()
+                .OpenPage()
                 .TryToLogin(user);
 
-            page.VerifyErrorMesage();
+            new LoginPage().VerifyErrorMesage();
         }
 
     }

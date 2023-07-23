@@ -1,6 +1,6 @@
 ﻿namespace SeleniumTests.Diploma
 {
-    internal class CustomerModel
+    public class UserAddressModel
 
     {
         public string FirstName { get; set; }

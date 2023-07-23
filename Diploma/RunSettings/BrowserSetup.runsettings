@@ -4,5 +4,10 @@
 		<Parameter name="Headless" value="true"/>
 		<Parameter name="BrowserType" value="Chrome"/>
 		<Parameter name="ImplicityWait" value="10"/>
+
+		<Parameter name="StandartUserMail" value="adduser@mail.ru"/>
+		<Parameter name="StandartUserPassword" value="psw_psw"/>
+		
+		<Parameter name="PostalCode" value="00000"/>		
 	</TestRunParameters>
 </RunSettings>

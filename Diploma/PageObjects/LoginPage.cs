@@ -1,6 +1,5 @@
-﻿using Diploma.PageObject;
+﻿using Diploma.Core;
 using OpenQA.Selenium;
-using SeleniumTests.Diploma.PageObject;
 using SeleniumTests.Diploma;
 using SeleniumTests.Diploma.PageObject;
 
@@ -16,11 +15,10 @@ namespace Diploma.PageObject
 
         public const string url = "http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account";
 
-        public const string STADART_USER_MAIL = "adduser@mail.ru";
-        public const string STADART_USER_PASSWORD = "psw_psw";
 
         public LoginPage()
         {
+            WaitHelper.WaitElement(driver, LoginButtom);
         }
 
         public override LoginPage OpenPage()
@@ -28,27 +26,17 @@ namespace Diploma.PageObject
             driver.Navigate().GoToUrl(url);
             return this;
         }
-
+        
         public AccountPage LoginAsStandartUser()
         {
-            var user = new UserLoginModel()
-            {
-                Mail = STADART_USER_MAIL,
-                Password = STADART_USER_PASSWORD
-            };
-
+            var user = UserBuilder.GetStandandartUser();  
             TryToLogin(user);
 
             return new AccountPage();
         }
         public AddressPage LoginAndGoToAdressPage()
         {
-            var user = new UserLoginModel()
-            {
-                Mail = STADART_USER_MAIL,
-                Password = STADART_USER_PASSWORD
-            };
-
+            var user = UserBuilder.GetStandandartUser();
             TryToLogin(user);
 
             return new AddressPage();
@@ -56,7 +44,6 @@ namespace Diploma.PageObject
 
         public void TryToLogin(UserLoginModel user)
         {
-            driver.FindElement(LoginButtom).Click();
             driver.FindElement(UserMailInput).SendKeys(user.Mail);
             driver.FindElement(PasswordInput).SendKeys(user.Password);
             driver.FindElement(SubmitLoginButtom).Click();

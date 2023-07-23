@@ -12,7 +12,7 @@ namespace Diploma.Test
 
         public void GoAddressInputTest()
         {
-
+            Browser.Instance.NavigateToUrl("http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account");
             new LoginPage()
                .OpenPage()
                .LoginAsStandartUser()
@@ -29,7 +29,7 @@ namespace Diploma.Test
 
         public void GoAddressValidationTest()
         {
-
+            Browser.Instance.NavigateToUrl("http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account");
             new LoginPage()
                .OpenPage()
                .LoginAsStandartUser()

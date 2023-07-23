@@ -22,6 +22,7 @@ namespace Diploma.PageObject
         {
 
             driver.Navigate().GoToUrl(url);
+
             return this;
         }
         public HomePage GoToHomePage()

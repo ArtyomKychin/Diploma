@@ -11,7 +11,7 @@ namespace Prestashop.Test
         [Test]
         [Description("AgreeTermsOfServiceTest")]
 
-        public void GoBasePath()
+        public void GoAgreeTermsOfServiceTest()
         {
             Browser.Instance.NavigateToUrl("http://prestashop.qatestlab.com.ua/ru/");
 

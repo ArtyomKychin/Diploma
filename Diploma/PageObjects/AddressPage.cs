@@ -1,8 +1,4 @@
-﻿using Diploma.PageObject;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using SeleniumTests.Diploma.PageObject;
-using SeleniumTests.Diploma;
+﻿using OpenQA.Selenium;
 using SeleniumTests.Diploma.PageObject;
 
 namespace Diploma.PageObject

@@ -13,6 +13,7 @@ namespace Diploma.Test
 
         public void LoginAndLogOut()
         {
+            Browser.Instance.NavigateToUrl("http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account");
             new LoginPage()
                 .OpenPage()
                 .LoginAsStandartUser()

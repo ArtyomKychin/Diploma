@@ -3,6 +3,7 @@ using OpenQA.Selenium.Support.UI;
 using SeleniumTests.Diploma.PageObject;
 using SeleniumTests.Diploma;
 using SeleniumTests.Diploma.PageObject;
+using Diploma.Core;
 
 namespace Diploma.PageObject
 {
@@ -21,14 +22,7 @@ namespace Diploma.PageObject
         private By SaveAndContinueButton = By.Id("submitAddress");
 
         public const string url = "http://prestashop.qatestlab.com.ua/ru/address";
-        public const string FIRSTNAME = "Artur";
-        public const string LASTNAME = "Dent";
-        public const string ADDRESS = "The House in west england";
-        public const string POSTALCODE = "00000";
-        public const string CITY = "without a city";
-        public const string MOBILEPHONE = "4200004242";
-        public const string ADDRESSALIAS = "forward to the Wogans";
-
+        
         public AddressInputPage()
         {
             WaitHelper.WaitElement(driver, AddressPageTitle);
@@ -42,23 +36,14 @@ namespace Diploma.PageObject
 
         public AddressPage ContinueVsCustomerAddress()
         {
-            var customer = new CustomerModel()
-            {
-                FirstName = FIRSTNAME,
-                LastName = LASTNAME,
-                PostalCode = POSTALCODE,
-                Address = ADDRESS,
-                City = CITY,
-                MobilePhone = MOBILEPHONE,
-                AddressAlias = ADDRESSALIAS,
-            };
-
+            var customer = UserBuilder.GetUserData();
+            
             InputCustomerAddressAndSave(customer);
 
             return new AddressPage();
         }
 
-        private void InputCustomerAddressAndSave(CustomerModel customer)
+        private void InputCustomerAddressAndSave(UserAddressModel customer)
         {
             driver.FindElement(FirstNameInput).SendKeys(customer.FirstName);
             driver.FindElement(LastNameInput).SendKeys(customer.LastName);
