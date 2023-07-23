@@ -1,0 +1,107 @@
+﻿using Diploma.PageObject;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Support.UI;
+using SeleniumTests.Diploma.PageObject;
+using SeleniumTests.Diploma.PageObject;
+
+namespace Diploma.PageObject
+{
+    public class HomePage : BasePage
+    {
+        private By InfoBlock = By.Id("cmsinfo_block");
+        private By AddTShirts = By.XPath("//h5[@itemprop='name'][.//a[@title='Faded Short Sleeve T-shirts']]");
+        private By AddBlouse = By.XPath("//*[@class='product_img_link'][.//*[@title='Blouse']]");
+        private By AddDress = By.XPath("//*[@class='product_img_link'][.//*[@title='Printed Dress']]");
+        private By QuickAddTShirts = By.XPath("//*[@data-id-product='1']");
+        private By QuickAddBlouse = By.XPath("//*[@data-id-product='2']");
+        private By QuickAddDress = By.XPath("//*[@data-id-product='3']");
+        private By CartPage = By.XPath("//*[@title='View my shopping cart']");
+        private By EnglishLanguage = By.XPath("//*[contains(text(),'English')]");
+        private By LanguageSelector = By.XPath("//div[@id='languages-block-top']");
+
+        public const string url = "http://prestashop.qatestlab.com.ua/ru/";
+
+        public HomePage()
+        {
+            WaitHelper.WaitElement(driver, InfoBlock);
+        }
+
+        public override BasePage OpenPage()
+        {
+            driver.Navigate().GoToUrl(url);
+            return this;
+        }
+
+        public TshirtsPage BuyProductAndGoToCart()
+        {
+            ActivateQuickViewTShirt();
+            driver.FindElement(AddTShirts).Click();
+
+            return new TshirtsPage();
+        }
+
+
+        public void ActivateQuickViewTShirt()
+        {
+            new Actions(driver)
+                .MoveToElement(driver.FindElement(AddTShirts))
+                .Perform();
+        }
+        public void ActivateQuickViewBlouse()
+        {
+            new Actions(driver)
+                .MoveToElement(driver.FindElement(AddBlouse))
+                .Perform();
+        }
+        public void ActivateQuickViewDress()
+        {
+            new Actions(driver)
+                .MoveToElement(driver.FindElement(AddDress))
+                .Perform();
+        }
+
+        public CartPage AddMoreProducts()
+        {
+
+            ActivateQuickViewTShirt();
+            driver.FindElement(QuickAddTShirts).Click();
+            new PopUpCartPage().ContinuePurchases();
+
+            ActivateQuickViewBlouse();
+            driver.FindElement(QuickAddBlouse).Click();
+            new PopUpCartPage().ContinuePurchases();
+
+            ActivateQuickViewDress();
+            driver.FindElement(QuickAddDress).Click();
+            new PopUpCartPage().GoToCart();
+
+            return new CartPage();
+
+        }
+
+        public LoginPage GoToLogin()
+        {
+            driver.FindElement(By.ClassName("login"));
+
+            return new LoginPage();
+        }
+
+        public CartPage GoCartPage()
+        {
+            LangagueSelect();
+            driver.FindElement(CartPage).Click();
+
+            return new CartPage();
+        }
+
+        public void LangagueSelect()
+        {
+
+            driver.FindElement(LanguageSelector).Click();
+            driver.FindElement(EnglishLanguage).Click();
+        }
+
+    }
+}
+
