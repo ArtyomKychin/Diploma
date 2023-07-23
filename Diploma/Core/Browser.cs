@@ -1,5 +1,7 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 
 namespace Diploma.Core
 {
@@ -25,21 +27,34 @@ namespace Diploma.Core
 
         private Browser()
         {
-            bool isHeadless = true;//for headless on - true
+            //bool isHeadless = true;//for headless on - true
+            var isHeadless = bool.Parse(TestContext.Parameters.Get("Headless"));
+            var wait = int.Parse(TestContext.Parameters.Get("ImplicityWait"));
 
-            if (isHeadless)
+            switch (TestContext.Parameters.Get("BrowserType"))
             {
-                ChromeOptions options = new ChromeOptions();
-                options.AddArgument("--headless");
+                case "Chrome":
+                    if (isHeadless)
+                    {
+                        ChromeOptions options = new ChromeOptions();
+                        options.AddArgument("--headless");
 
-                driver = new ChromeDriver(options);
-            }
-            else
-            {
-                driver = new ChromeDriver();
+                        driver = new ChromeDriver(options);
+                    }
+                    else
+                    {
+                        driver = new ChromeDriver();
+                    }
+                    break;
+                case "FireFox":
+                    driver = new FirefoxDriver();
+                    break;
+                case "Default":
+                    driver = new ChromeDriver();
+                    break;
             }
 
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(wait);
             driver.Manage().Window.Maximize();
         }
 

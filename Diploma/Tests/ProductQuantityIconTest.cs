@@ -1,6 +1,5 @@
 ﻿using Diploma.Core;
 using Diploma.PageObject;
-using Diploma.Test;
 using NUnit.Framework;
 
 namespace Diploma.Test
