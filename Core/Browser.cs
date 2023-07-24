@@ -6,7 +6,7 @@ using OpenQA.Selenium.Firefox;
 namespace Diploma.Core
 {
 
-    internal class Browser
+    public class Browser
     {
         private static Browser instance = null;
         private IWebDriver driver;

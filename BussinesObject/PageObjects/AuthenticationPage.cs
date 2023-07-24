@@ -5,40 +5,28 @@ using SeleniumTests.Diploma.PageObject;
 
 namespace Diploma.PageObject
 {
-    public class LoginPage : BasePage
+    public class AuthenticationPage : BasePage
     {
         private By UserMailInput = By.Id("email");
         private By PasswordInput = By.Id("passwd");
-        private By ErrorMessage = By.XPath("//*[@class='alert alert-danger'][.//li[contains(text(),'Authentication failed')]]");
+        //private By ErrorMessage = By.ClassName("alert alert-danger");
         private By SubmitLoginButtom = By.Id("SubmitLogin");
-        private By LoginButtom = By.ClassName("login");
-
-        public const string url = "http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account";
 
 
-        public LoginPage()
-        {
-            WaitHelper.WaitElement(driver, LoginButtom);
-        }
+        public const string url =
+        "http://prestashop.qatestlab.com.ua/ru/authentication?multi-shipping=0&display_guest_checkout=0&back=http%3A%2F%2Fprestashop.qatestlab.com.ua%2Fru%2Forder%3Fstep%3D1%26multi-shipping%3D0";
 
-        public override LoginPage OpenPage()
+        public override AuthenticationPage OpenPage()
         {
             Browser.Instance.NavigateToUrl(url);
             return this;
         }
-        
-        public AccountPage LoginAsStandartUser()
-        {
-            var user = UserBuilder.GetStandandartUser();  
-            TryToLogin(user);
 
-            return new AccountPage();
-        }
         public AddressPage LoginAndGoToAdressPage()
         {
             var user = UserBuilder.GetStandandartUser();
+            
             TryToLogin(user);
-
             return new AddressPage();
         }
 
@@ -47,14 +35,6 @@ namespace Diploma.PageObject
             driver.FindElement(UserMailInput).SendKeys(user.Mail);
             driver.FindElement(PasswordInput).SendKeys(user.Password);
             driver.FindElement(SubmitLoginButtom).Click();
-        }
-
-
-
-        internal bool VerifyErrorMesage()
-        {
-            driver.FindElement(ErrorMessage);
-            return false;
         }
     }
 }

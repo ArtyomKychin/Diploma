@@ -9,7 +9,7 @@ namespace Diploma.Test
     {
         [Test]
         [Description("AddressInputTest")]
-
+         
         public void GoAddressInputTest()
         {
             Browser.Instance.NavigateToUrl("http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account");

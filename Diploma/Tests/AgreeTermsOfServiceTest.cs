@@ -4,7 +4,7 @@ using Diploma.Test;
 using NUnit.Framework;
 using OpenQA.Selenium;
 
-namespace Prestashop.Test
+namespace Diploma.Test
 {
     internal class AgreeTermsOfServiceTest : PrestaShopBaseTest
     {

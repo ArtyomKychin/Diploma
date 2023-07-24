@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 
 namespace Diploma
 {
-    internal class WaitHelper
+    public class WaitHelper
     {
         public static void WaitElement(IWebDriver driver, By by, int time = 10)
         {

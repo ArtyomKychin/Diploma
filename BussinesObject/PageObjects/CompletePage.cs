@@ -1,7 +1,5 @@
 ﻿using OpenQA.Selenium;
 using SeleniumTests.Diploma.PageObject;
-using SeleniumTests.Diploma.PageObject;
-using System;
 
 namespace Diploma.PageObject
 {
