@@ -1,5 +1,6 @@
 ﻿using Diploma.Core;
 using Diploma.PageObject;
+using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using OpenQA.Selenium;
 
@@ -7,8 +8,14 @@ namespace Diploma.Test
 {
     internal class AddressInputTest : PrestaShopBaseTest
     {
-        [Test]
+        [Test(Description = "Positive test of address input")]
+        [AllureSeverity(Allure.Commons.SeverityLevel.normal)]
+        [AllureTag("Smoke")]
+        [AllureOwner("Artem")]
         [Description("AddressInputTest")]
+        [AllureTms("Azure")]
+        [AllureIssue("Azure 420420")]
+        [AllureLink("google.com")]
          
         public void GoAddressInputTest()
         {

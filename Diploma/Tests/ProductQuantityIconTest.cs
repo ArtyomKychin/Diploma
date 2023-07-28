@@ -14,7 +14,7 @@ namespace Diploma.Test
             Browser.Instance.NavigateToUrl("http://prestashop.qatestlab.com.ua/ru/");
 
             string expcetedPruductQuantity = "3";
-
+            
             new HomePage()
                  .AddMoreProducts();
 

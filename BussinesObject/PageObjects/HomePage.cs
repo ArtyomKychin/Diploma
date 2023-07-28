@@ -2,19 +2,19 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using SeleniumTests.Diploma.PageObject;
-using System;
+using System.Net.Http.Headers;
 
 namespace Diploma.PageObject
 {
     public class HomePage : BasePage
     {
         private By InfoBlock = By.Id("cmsinfo_block");
-        private By AddTShirts = By.XPath("//h5[@itemprop='name'][.//a[@title='Faded Short Sleeve T-shirts']]");
-        private By AddBlouse = By.XPath("//*[@class='product_img_link'][.//*[@title='Blouse']]");
-        private By AddDress = By.XPath("//*[@class='product_img_link'][.//*[@title='Printed Dress']]");
-        private By QuickAddTShirts = By.XPath("//*[@data-id-product='1']");
-        private By QuickAddBlouse = By.XPath("//*[@data-id-product='2']");
-        private By QuickAddDress = By.XPath("//*[@data-id-product='3']");
+        private By AddTShirts = By.XPath("//*[@class='product-container']//img[contains(@class,'replace-2x')][contains(@src,'tshirts')][1]");
+        private By AddBlouse = By.XPath("//*[@class='product_img_link'][.//*[@title='Blouse']][1]");
+        private By AddDress = By.XPath("//*[@class='product_img_link'][.//*[@title='Printed Dress']][1]");
+        private By QuickAddTShirts = By.XPath("//*[@data-id-product='1'][1]");
+        private By QuickAddBlouse = By.XPath("//*[@data-id-product='2'][1]");
+        private By QuickAddDress = By.XPath("//*[@data-id-product='3'][1]");
         private By CartPage = By.XPath("//*[@title='View my shopping cart']");
         private By EnglishLanguage = By.XPath("//*[contains(text(),'English')]");
         private By LanguageSelector = By.XPath("//div[@id='languages-block-top']");
@@ -40,30 +40,32 @@ namespace Diploma.PageObject
 
             return new TshirtsPage();
         }
+        public void ActivateQuickViewTShirt()
+        {
+            ActivateQuickView(AddTShirts);
+        }
 
+        public void ActivateQuickViewBlouse()
+        {
+            ActivateQuickView(AddBlouse);
+        }
 
-        public void ActivateQuickViewTShirt()//there will be refactoring/May be)
+        public void ActivateQuickViewDress()
+        {
+            ActivateQuickView(AddDress);
+        }
+
+        public void ActivateQuickView(By product)
         {
             new Actions(driver)
-                .MoveToElement(driver.FindElement(AddTShirts))
+                .MoveToElement(driver.FindElement(product))
                 .Perform();
         }
-        public void ActivateQuickViewBlouse()//there will be refactoring
-        {
-            new Actions(driver)
-                .MoveToElement(driver.FindElement(AddBlouse))
-                .Perform();
-        }
-        public void ActivateQuickViewDress()//there will be refactoring
-        {
-            new Actions(driver)
-                .MoveToElement(driver.FindElement(AddDress))
-                .Perform();
-        }
+
 
         public CartPage AddMoreProducts()//there will be refactoring
         {
-
+            
             ActivateQuickViewTShirt();
             driver.FindElement(QuickAddTShirts).Click();
             new PopUpCartPage().ContinuePurchases();
@@ -74,10 +76,9 @@ namespace Diploma.PageObject
 
             ActivateQuickViewDress();
             driver.FindElement(QuickAddDress).Click();
-            new PopUpCartPage().GoToCart();
+             new PopUpCartPage().GoToCart();
 
             return new CartPage();
-
         }
 
         public LoginPage GoToLogin()

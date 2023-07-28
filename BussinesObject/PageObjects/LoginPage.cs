@@ -1,4 +1,5 @@
 ﻿using Diploma.Core;
+using NUnit.Allure.Attributes;
 using OpenQA.Selenium;
 using SeleniumTests.Diploma;
 using SeleniumTests.Diploma.PageObject;
@@ -21,12 +22,14 @@ namespace Diploma.PageObject
             WaitHelper.WaitElement(driver, LoginButtom);
         }
 
+        [AllureStep]
         public override LoginPage OpenPage()
         {
             Browser.Instance.NavigateToUrl(url);
             return this;
         }
-        
+
+        [AllureStep]
         public AccountPage LoginAsStandartUser()
         {
             var user = UserBuilder.GetStandandartUser();  
@@ -34,6 +37,8 @@ namespace Diploma.PageObject
 
             return new AccountPage();
         }
+
+        [AllureStep]
         public AddressPage LoginAndGoToAdressPage()
         {
             var user = UserBuilder.GetStandandartUser();
@@ -42,6 +47,7 @@ namespace Diploma.PageObject
             return new AddressPage();
         }
 
+        [AllureStep]
         public void TryToLogin(UserLoginModel user)
         {
             driver.FindElement(UserMailInput).SendKeys(user.Mail);
@@ -49,8 +55,7 @@ namespace Diploma.PageObject
             driver.FindElement(SubmitLoginButtom).Click();
         }
 
-
-
+        [AllureStep]
         public bool VerifyErrorMesage()
         {
             driver.FindElement(ErrorMessage);

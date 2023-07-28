@@ -10,10 +10,11 @@ namespace Diploma.Test
 
         [Test]
         [Description("BasePathTest")]
+        [Retry(5)]
 
         public void GoBasePathTestVsMoreProductsAndActivateQuickViewBasePath()
         {
-            Browser.Instance.NavigateToUrl("http://prestashop.qatestlab.com.ua/ru/");
+            Browser.Instance.NavigateToUrl("http://prestashop.qatestlab.com.ua/en/");
 
             new HomePage()
                 .AddMoreProducts()

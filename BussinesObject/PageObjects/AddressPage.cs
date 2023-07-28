@@ -1,4 +1,5 @@
 ﻿using Diploma.Core;
+using NUnit.Allure.Attributes;
 using OpenQA.Selenium;
 using SeleniumTests.Diploma.PageObject;
 
@@ -17,18 +18,21 @@ namespace Diploma.PageObject
             WaitHelper.WaitElement(driver, AddressPageTitle);
         }
 
+        [AllureStep]
         public override BasePage OpenPage()
         {
             Browser.Instance.NavigateToUrl(url);
             return this;
         }
 
+        [AllureStep]
         public AddressInputPage UpdateCustomerAddress()
         {
             driver.FindElement(UpdateAddresseButton).Click();
             return new AddressInputPage();
         }
 
+        [AllureStep]
         public DeliveryMethodPage SkipOrUpdateAddressAndContinue()
         {
             driver.FindElement(ContinueButton).Click();

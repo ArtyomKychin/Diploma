@@ -20,5 +20,10 @@ namespace Diploma
             new WebDriverWait(driver, TimeSpan.FromSeconds(time)).Until(element => element.FindElements(by).Count == count);
         }
 
+        public static void WaitElementDisplayed(IWebDriver driver, By by, int time = 10)
+        {
+            new WebDriverWait(driver, TimeSpan.FromSeconds(time)).Until(element => element.FindElement(by).Displayed);
+        }
+
     }
 }

@@ -7,7 +7,7 @@ namespace Diploma.PageObject
     public class CartPage : BasePage
     {
         private By CartSummaryTitle = By.XPath("//*[contains(text(),'Shopping-cart summary')]");
-        private By ChekOutButton = By.XPath("//*[@title='Proceed to checkout']");
+        private By ChekOutButton = By.XPath("//p[@class='cart_navigation clearfix']//a[@title='Proceed to checkout']");
         private By CartQuantity = By.XPath("//span[@class='ajax_cart_quantity']");
         private By CartEmptyMessage = By.XPath("//p[@class='alert alert-warning']");
 
