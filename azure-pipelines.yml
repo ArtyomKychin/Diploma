@@ -23,6 +23,8 @@ steps:
     arguments: '--configuration Debug'
 
 - task: DotNetCoreCLI@2
-  displayName: Dotnet test -s BrowserSetup.runsettings
+  displayName: 'Dotnet test -s BrowserSetup.runsettings'
   inputs:
-    command: 'test'
+    command: 'test' 
+    arguments: '-s BrowserSetup.runsettings'
+
