@@ -5,7 +5,7 @@ using OpenQA.Selenium;
 
 namespace Diploma.Test
 {
-    internal class BasePathTestVsMoreProductsAndActivateQuickView : PrestaShopBaseTest
+    internal class BasePathTestVsMoreProductsAndActivateQuickView : BaseTest
     {
 
         [Test]

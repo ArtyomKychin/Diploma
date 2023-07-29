@@ -1,4 +1,5 @@
 ﻿using Diploma.Core;
+using NLog;
 using NUnit.Allure.Attributes;
 using OpenQA.Selenium;
 using SeleniumTests.Diploma;
@@ -15,7 +16,7 @@ namespace Diploma.PageObject
         private By LoginButtom = By.ClassName("login");
 
         public const string url = "http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account";
-
+        private static Logger logger = LogManager.GetCurrentClassLogger();
 
         public LoginPage()
         {
@@ -25,6 +26,8 @@ namespace Diploma.PageObject
         [AllureStep]
         public override LoginPage OpenPage()
         {
+            logger.Info($"Navigate to URL {url}");
+
             Browser.Instance.NavigateToUrl(url);
             return this;
         }
@@ -32,6 +35,8 @@ namespace Diploma.PageObject
         [AllureStep]
         public AccountPage LoginAsStandartUser()
         {
+            logger.Info($"LoginAsStandartUser");
+
             var user = UserBuilder.GetStandandartUser();  
             TryToLogin(user);
 

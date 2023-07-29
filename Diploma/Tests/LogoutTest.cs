@@ -6,7 +6,7 @@ using OpenQA.Selenium;
 
 namespace Diploma.Test
 {
-    internal class LogoutTest : PrestaShopBaseTest
+    internal class LogoutTest : BaseTest
     {
         [Test]
         [Description("LogoutTest")]

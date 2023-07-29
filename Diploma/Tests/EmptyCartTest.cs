@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace Diploma.Test
 {
-    internal class EmptyCartTest : PrestaShopBaseTest
+    internal class EmptyCartTest : BaseTest
     {
         [Test]
         [Description("EmptyCartTest")]

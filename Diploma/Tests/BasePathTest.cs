@@ -5,7 +5,7 @@ using OpenQA.Selenium;
 
 namespace Diploma.Test
 {
-    internal class BasePathTest : PrestaShopBaseTest
+    internal class BasePathTest : BaseTest
     {
 
         [Test]
@@ -20,7 +20,7 @@ namespace Diploma.Test
                .LoginAsStandartUser()
                .GoToHomePage()
                .BuyProductAndGoToCart()
-               .GoPopUpCartPageFromQuickViewPage()
+               .GoPopUpCartPageFromTSirtPage()
                .GoToCart()
                .GoAdressPage()
                .SkipOrUpdateAddressAndContinue()

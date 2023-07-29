@@ -6,7 +6,7 @@ using SeleniumTests.Diploma;
 
 namespace Diploma.Test
 {
-    internal class LoginTest : PrestaShopBaseTest
+    internal class LoginTest : BaseTest
     {
 
         [Test]

@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace Diploma.Test
 {
-    internal class ProductQuantityIconTest : PrestaShopBaseTest
+    internal class ProductQuantityIconTest : BaseTest
     {
         [Test]
         [Description("ProductQuantityIconTest")]
@@ -13,7 +13,7 @@ namespace Diploma.Test
         {
             Browser.Instance.NavigateToUrl("http://prestashop.qatestlab.com.ua/ru/");
 
-            string expcetedPruductQuantity = "3";
+            string expcetedPruductQuantity = "4";
             
             new HomePage()
                  .AddMoreProducts();

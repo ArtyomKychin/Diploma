@@ -6,7 +6,7 @@ using OpenQA.Selenium;
 
 namespace Diploma.Test
 {
-    internal class AddressInputTest : PrestaShopBaseTest
+    internal class AddressInputTest : BaseTest
     {
         [Test(Description = "Positive test of address input")]
         [AllureSeverity(Allure.Commons.SeverityLevel.normal)]
@@ -17,7 +17,7 @@ namespace Diploma.Test
         [AllureIssue("Azure 420420")]
         [AllureLink("google.com")]
          
-        public void GoAddressInputTest()
+         public void GoAddressInputTest()
         {
             Browser.Instance.NavigateToUrl("http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account");
             new LoginPage()

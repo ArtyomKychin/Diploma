@@ -6,7 +6,7 @@ using OpenQA.Selenium;
 
 namespace Diploma.Test
 {
-    internal class AgreeTermsOfServiceTest : PrestaShopBaseTest
+    internal class AgreeTermsOfServiceTest : BaseTest
     {
         [Test]
         [Description("AgreeTermsOfServiceTest")]
@@ -20,7 +20,7 @@ namespace Diploma.Test
                .LoginAsStandartUser()
                .GoToHomePage()
                .BuyProductAndGoToCart()
-               .GoPopUpCartPageFromQuickViewPage()
+               .GoPopUpCartPageFromTSirtPage()
                .GoToCart()
                .GoAdressPage()
                .SkipOrUpdateAddressAndContinue()

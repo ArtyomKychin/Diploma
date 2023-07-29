@@ -1,8 +1,9 @@
 ﻿using Diploma.Core;
+using NLog;
+using NUnit.Allure.Attributes;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using SeleniumTests.Diploma.PageObject;
-using System.Net.Http.Headers;
 
 namespace Diploma.PageObject
 {
@@ -20,10 +21,15 @@ namespace Diploma.PageObject
         private By LanguageSelector = By.XPath("//div[@id='languages-block-top']");
         private By Login = By.ClassName("login");
 
-        
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+        public const string url = "http://prestashop.qatestlab.com.ua/ru/";
+
+
         public override BasePage OpenPage()
         {
-            Browser.Instance.NavigateToUrl("http://prestashop.qatestlab.com.ua/ru/");
+            logger.Info($"Navigate to url {url}");
+
+            Browser.Instance.NavigateToUrl(url);
             return this;
         }
 
@@ -32,29 +38,42 @@ namespace Diploma.PageObject
             WaitHelper.WaitElement(driver, InfoBlock);
         }
 
-
+        [AllureStep]
         public TshirtsPage BuyProductAndGoToCart()
         {
+            logger.Info($"TShirts QuickView activated successfully");
+
             ActivateQuickViewTShirt();
             driver.FindElement(AddTShirts).Click();
 
             return new TshirtsPage();
         }
+
+        [AllureStep]
         public void ActivateQuickViewTShirt()
         {
+            logger.Info($"TShirts QuickView activated successfully");
+
             ActivateQuickView(AddTShirts);
         }
 
+        [AllureStep]
         public void ActivateQuickViewBlouse()
         {
+            logger.Info($"Blouse QuickView activated successfully");
+
             ActivateQuickView(AddBlouse);
         }
 
+        [AllureStep]
         public void ActivateQuickViewDress()
         {
+            logger.Info($"Dress QuickView activated successfully");
+
             ActivateQuickView(AddDress);
         }
 
+        [AllureStep]
         public void ActivateQuickView(By product)
         {
             new Actions(driver)
@@ -63,9 +82,11 @@ namespace Diploma.PageObject
         }
 
 
+        [AllureStep]
         public CartPage AddMoreProducts()//there will be refactoring
         {
-            
+            logger.Info($"All products added to cart successfully");
+
             ActivateQuickViewTShirt();
             driver.FindElement(QuickAddTShirts).Click();
             new PopUpCartPage().ContinuePurchases();
@@ -76,27 +97,36 @@ namespace Diploma.PageObject
 
             ActivateQuickViewDress();
             driver.FindElement(QuickAddDress).Click();
-             new PopUpCartPage().GoToCart();
+            new PopUpCartPage().GoToCart();
 
             return new CartPage();
         }
 
+        [AllureStep]
         public LoginPage GoToLogin()
         {
+            logger.Info($"Navigated to the authentication page");
+
             driver.FindElement(Login).Click();
             return new LoginPage();
         }
 
+        [AllureStep]
         public CartPage GoCartPage()
         {
+            logger.Info($"Moved to cart");
+
             LangagueSelect();
             driver.FindElement(CartPage).Click();
 
             return new CartPage();
         }
 
+        [AllureStep]
         public void LangagueSelect()
         {
+            logger.Info($"Language selection done");
+
             driver.FindElement(LanguageSelector).Click();
             driver.FindElement(EnglishLanguage).Click();
         }

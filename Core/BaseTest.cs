@@ -10,8 +10,8 @@ using System.Diagnostics.CodeAnalysis;
 namespace Diploma.Test
 {
     [AllureNUnit]
-    //[Parallelizable(ParallelScope.All)]
-    public class PrestaShopBaseTest
+    [Parallelizable(ParallelScope.All)]
+    public class BaseTest
     {
         private AllureLifecycle allure;
 
@@ -25,14 +25,13 @@ namespace Diploma.Test
         [TearDown]
         public void TearDown()
         {
-            Browser.Instance.CloseBrowser();
-
             if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
             {
                 Screenshot screenshot = ((ITakesScreenshot)Browser.Instance.Driver).GetScreenshot();
                 byte[] bytes = screenshot.AsByteArray;
                 allure.AddAttachment("Screenshot", "image/png", bytes);
             }
+            Browser.Instance.CloseBrowser();
         }
     }
 }

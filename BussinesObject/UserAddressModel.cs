@@ -11,5 +11,16 @@
         public string MobilePhone { get; set; }
         public string AddressAlias { get; set; }
 
+        public override string? ToString()
+        {
+            return
+                $"Mail: {FirstName}" +
+                $"LastName: {LastName}" +
+                $"PostalCode: {PostalCode}" +
+                $"Address: {Address}" +
+                $"City: {City}" +
+                $"MobilePhone: {MobilePhone}" + 
+                $"AddressAlias: {AddressAlias}";
+        }
     }
 }

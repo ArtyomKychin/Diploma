@@ -1,22 +1,40 @@
-﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Diploma.Core;
+using NUnit.Framework;
 
 namespace Core.Configuration
 {
     public class AppConfiguration
     {
-        public static BrowserConfiguration Browser;
+        private static BrowserConfiguration browser = null;
+        public static BrowserConfiguration? Browser 
+        {
+            get
+            {
+                if (browser == null)
+                {
+                    browser = new BrowserConfiguration();
+                    browser.Headless = GetValue<bool>("Headless");
+                    browser.ImplicityWait = GetValue<int>("ImplicityWait");
+                    browser.BrowserType = GetValue<string>("BrowserType");
+                }
+                return browser;
+            }
+        }
 
-        
+        public static T GetValue<T>(string key)
+        {
+            string value = TestContext.Parameters.Get(key);
 
-        public string Headless = TestContext.Parameters.Get("Headless");
-        //public string ImplicityWait = TestContext.Parameters.Get("ImplicityWait");
-        //public string BrowserType = TestContext.Parameters.Get("BrowserType");
+            try
+            {
+                return (T)Convert.ChangeType(value, typeof(T));
+            }
+            catch (Exception ex)
+            {
+                return default(T);
+            }
+        }
     }
-
 }
+
 
