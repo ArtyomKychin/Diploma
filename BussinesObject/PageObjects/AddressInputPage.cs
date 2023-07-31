@@ -1,5 +1,4 @@
-﻿using Allure.Commons;
-using Diploma.Core;
+﻿using Diploma.Core;
 using NLog;
 using NUnit.Allure.Attributes;
 using OpenQA.Selenium;
@@ -25,8 +24,7 @@ namespace Diploma.PageObject
 
         public const string url = "http://prestashop.qatestlab.com.ua/ru/address";
         private static Logger logger = LogManager.GetCurrentClassLogger();
-        //private AllureLifecycle? allure;
-
+        
         public AddressInputPage()
         {
             WaitHelper.WaitElement(driver, AddressPageTitle);
@@ -66,10 +64,7 @@ namespace Diploma.PageObject
             SelectCountry();
             SelectState();
             driver.FindElement(SaveAndContinueButton).Click();
-
-            //Screenshot screenshot = ((ITakesScreenshot)Browser.Instance.Driver).GetScreenshot();
-            //byte[] bytes = screenshot.AsByteArray;
-            //allure.AddAttachment("Screenshot", "image/png", bytes);
+                     
         }
 
         [AllureStep]

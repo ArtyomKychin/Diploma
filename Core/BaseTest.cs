@@ -4,8 +4,6 @@ using NUnit.Allure.Core;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Diploma.Test
 {

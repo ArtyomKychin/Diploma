@@ -2,7 +2,6 @@
 using Diploma.PageObject;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using SeleniumTests.Diploma;
 
 namespace Diploma.Test
 {
