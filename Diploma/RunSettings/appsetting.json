@@ -1,0 +1,7 @@
+﻿{
+	"Browser": {
+		"Headless": "true",
+		"Type": "Chrome",
+		"TimOut": 10
+	}
+}
