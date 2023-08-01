@@ -27,4 +27,3 @@ steps:
   inputs:
     command: 'test' 
     arguments: '-s BrowserSetup.runsettings'
-
