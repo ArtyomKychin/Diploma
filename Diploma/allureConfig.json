@@ -1,0 +1,10 @@
+﻿{
+  "allure": {
+    "directory": "allure-results",
+    "links":
+    [
+      "https://example.org/{tms}",
+      "https://example.azure/org/{issue}"
+    ]
+  }
+}
